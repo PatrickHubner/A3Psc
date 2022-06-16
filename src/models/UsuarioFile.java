@@ -17,7 +17,7 @@ public class UsuarioFile extends DefaultFile {
     }
 
 	public String converteUsuarioPraCsv(Usuario usr) {
-		return "USUÁRIO" + usr.getId() + "\n" + "Nome: "+ usr.getNome() + ";" + "Contato: " + usr.getContato() + ";" + "Endereço: "+ usr.getEndereco() + ";";
+		return usr.getId() + ";" + usr.getNome() + ";"  + usr.getContato() + ";" + usr.getEndereco() + ";\n";
 		
 	}
 
@@ -36,14 +36,12 @@ public class UsuarioFile extends DefaultFile {
     	File arquivo = new File(DIR_ARQ + "/" + NOME_ARQ);
         /* TENTA GRAVAR NOVO ARQUIVO, SE DER RUIM LANÇA UM ERRO DE IO*/
         try {
-            System.out.println(lista);
             //boolean newFile = arquivo.createNewFile();
             FileOutputStream fos = new FileOutputStream(arquivo);
 
             for(int i = 0; i < lista.size(); ++i) {
                 //CONVERTE PRA CSV E TRANSFORMA O CONTEÚDO PRA BYTES
                 fos.write(this.converteUsuarioPraCsv(lista.get(i)).getBytes());
-                fos.write("\n========\n".getBytes());
             }
             /* DESCARREGA NO ARQUIVO E FECHA O ARQUIVO */
             fos.flush();

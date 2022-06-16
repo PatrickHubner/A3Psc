@@ -4,9 +4,11 @@ import java.util.List;
 
 import models.Evento;
 import models.EventoFile;
+import models.Usuario;
 
 public class EventoDB {
     private List<Evento> eventos;
+    private ArrayList<Usuario> participantes;
     EventoFile evtFile;
     private int idAtual = 0;
     private static EventoDB instancia; // USANDO DESIGN PATTERN SINGLETON
@@ -24,8 +26,9 @@ public class EventoDB {
         return instancia;
     }
 
-    private EventoDB() {
+    public EventoDB() {
     	eventos = new ArrayList<>();
+    	participantes = new ArrayList<Usuario>();
     }
     /*CORRIGE O ID NO FUNCIONARIO FILE*/
     public void setIdAtual(int id) {
@@ -54,6 +57,17 @@ public class EventoDB {
     public void salvarEventosNoBD () {
         instancia.evtFile.salvarEventos(this.eventos);
     }
-
+    
+	public void addParticipante(Usuario participante, Evento evento) {
+		evento.addParticipante(participante);
+	}
+	
+	public void removeParticipante(Usuario participante, Evento evento) {
+		evento.removeParticipante(participante);
+	}
+	
+	public ArrayList<Usuario> getTodosParticipantes() {
+		return this.participantes;
+	}
 
 }

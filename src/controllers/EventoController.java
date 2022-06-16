@@ -22,5 +22,9 @@ public class EventoController {
 	    public void listarEventos() {
 	         view.listar(db.getTodosEventos());
 	    }
+	    
+	   public void addParticipante() {
+		   view.addParticipante();
+	   }
 	}
 
