@@ -13,5 +13,10 @@ public class Usuario extends Elemento {
 	}
 	public void setContato(String contato) {
 		this.contato = contato;
+	}
+	@Override
+	public String toString() {
+		return getId() + " - " + "Nome: " + getNome() + " - " + "Contato: " + getContato() + ";";
 	}	
+	
 }

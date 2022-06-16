@@ -11,13 +11,14 @@ import databases.EventoDB;
 
 public class EventoFile extends DefaultFile {
     protected static final String NOME_ARQ = "Eventos.csv";
+	private EventoDB db = EventoDB.getInstance();
 	
 	public EventoFile() {
         super();
     }
 
 	public String converteEventoPraCsv(Evento evt) {
-		return "EVENTO " + evt.getId() + "\n" + "Nome: "+ evt.getNome() + ";" + "Contato: " + "Endereço: "+ evt.getEndereco() + ";" + "Categoria: "  + evt.getCategoria() + ";";
+		return evt.getId() + ";" +  evt.getNome() + ";" + evt.getEndereco() + ";" + evt.getCategoria()  + ";"  +  evt.getHorario()  + ";" + db.getTodosParticipantes() + ";\n";
 		
 	}
 
@@ -28,7 +29,8 @@ public class EventoFile extends DefaultFile {
                 Integer.parseInt(campos[0]),
                 campos[1],
                 campos[2],
-                Integer.parseInt(campos[3]));
+                campos[3],
+                db.getTodosParticipantes());
         return f;
     };
 
@@ -36,14 +38,12 @@ public class EventoFile extends DefaultFile {
     	File arquivo = new File(DIR_ARQ + "/" + NOME_ARQ);
         /* TENTA GRAVAR NOVO ARQUIVO, SE DER RUIM LANÇA UM ERRO DE IO*/
         try {
-            System.out.println(lista);
             //boolean newFile = arquivo.createNewFile();
             FileOutputStream fos = new FileOutputStream(arquivo);
 
             for(int i = 0; i < lista.size(); ++i) {
                 //CONVERTE PRA CSV E TRANSFORMA O CONTEÚDO PRA BYTES
                 fos.write(this.converteEventoPraCsv(lista.get(i)).getBytes());
-                fos.write("\n========\n".getBytes());
             }
             /* DESCARREGA NO ARQUIVO E FECHA O ARQUIVO */
             fos.flush();

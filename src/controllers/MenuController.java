@@ -23,6 +23,9 @@ public class MenuController {
 	    	case 4:
 	    		sdb.listarEventos();
 	    		break;
+	    	case 5:
+	    		sdb.addParticipante();
+	    		break;
 	    	case 6: 
 	    		System.out.println("FALTA FAZER\n");
 	    		break;

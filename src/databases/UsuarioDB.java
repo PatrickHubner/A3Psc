@@ -6,7 +6,7 @@ import models.Usuario;
 import models.UsuarioFile;
 
 public class UsuarioDB {
-    private List<Usuario> usuarios;
+    private ArrayList<Usuario> usuarios;
     UsuarioFile usrFile;
     private int idAtual = 0;
     private static UsuarioDB instancia; // USANDO DESIGN PATTERN SINGLETON
@@ -24,8 +24,8 @@ public class UsuarioDB {
         return instancia;
     }
 
-    private UsuarioDB() {
-    	usuarios = new ArrayList<>();
+    public UsuarioDB() {
+    	usuarios = new ArrayList<Usuario>();
     }
     /*CORRIGE O ID NO FUNCIONARIO FILE*/
     public void setIdAtual(int id) {
@@ -38,17 +38,18 @@ public class UsuarioDB {
             usuario.setId(this.idAtual);
         }
         /* CHECA SE O FUNCIONARIO JÁ EXISTE */
-        if (this. usuarios.contains( usuario)) {
+        if (this.usuarios.contains( usuario)) {
             System.out.println("usuario já existe");
         } else {
             /* ADICIONA USUARIO */
             this.usuarios.add( usuario);
+            System.out.println(this.usuarios);
             salvarUsuariosNoBD();
 
         }
     }
-    public List<Usuario> getTodosUsuarios() {
-        return this. usuarios;
+    public ArrayList<Usuario> getTodosUsuarios() {
+        return this.usuarios;
     }
 
     public void salvarUsuariosNoBD () {

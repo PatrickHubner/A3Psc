@@ -20,4 +20,8 @@ public class SistemaController {
 		evt.listarEventos();
 	}	
 	
+	public void addParticipante() {
+		evt.addParticipante();
+	}
+	
  }
