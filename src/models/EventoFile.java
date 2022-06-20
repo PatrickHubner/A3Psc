@@ -18,19 +18,43 @@ public class EventoFile extends DefaultFile {
     }
 
 	public String converteEventoPraCsv(Evento evt) {
-		return evt.getId() + ";" +  evt.getNome() + ";" + evt.getEndereco() + ";" + evt.getCategoria()  + ";"  +  evt.getHorario()  + ";" + db.getTodosParticipantes() + ";\n";
+		return evt.getId() + ";" +  evt.getNome() + ";" + evt.getEndereco() + ";" + evt.getCategoria()  + ";"  +  evt.getHorario()  + ";" + evt.listarParticipantes() + ";\n";
 		
+	}
+	
+	public void formatarDados(ArrayList<String> participantes, ArrayList<Integer> horario, String[] campos) {
+		//System.out.println(.split(",")[1]);
+		String temp = campos[5].replace("[", ",").replace("]", ",");
+		String[] lista = temp.split(",");
+		System.out.println(lista[0]);
+		System.out.println(lista[1]);
+    	int hora = Integer.parseInt(campos[4].split("")[1] + campos[4].split("")[2]);
+    	int minuto = Integer.parseInt(campos[4].split("")[5] + campos[4].split("")[6]);
+    	int segundo = Integer.parseInt(campos[4].split("")[9] + campos[4].split("")[10]);
+    	for (int i = 1; i < lista.length; i ++) {
+    		System.out.println(lista[i]);
+    		participantes.add(lista[i]);
+    	}
+    	System.out.println(participantes);
+    	horario.add(hora);
+    	horario.add(minuto);
+    	horario.add(segundo);
 	}
 
     public Evento converteCSVPraEvento(String linha){
     	String[] campos = linha.split(";");
         /* CRIA O FUNCIONARIO COM BASE NA LINHA LIDA PELO ARQUIVO */
+    	ArrayList<String> participantes = new ArrayList<String> ();
+    	ArrayList<Integer> horario = new ArrayList<Integer> ();
+    	formatarDados(participantes, horario, campos);
+    	System.out.println("CSV PRA EVENTO");
         Evento f = new Evento(
                 Integer.parseInt(campos[0]),
                 campos[1],
                 campos[2],
                 campos[3],
-                db.getTodosParticipantes());
+                horario,
+        		participantes);
         return f;
     };
 
@@ -72,6 +96,7 @@ public class EventoFile extends DefaultFile {
                      /*CHAMA A CONVERSÃO, ADICIONANDO O FUNCIONARIO CRIADO DIRETO NO ARQUIVO*/
                      Evento e = converteCSVPraEvento(linha);
                      retorno.add(e);
+                     System.out.println(retorno);
                      db.setIdAtual(e.getId());
                  }
 

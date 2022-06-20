@@ -16,7 +16,7 @@ public class EventoView {
     public void listar(List<Evento> lista) {
         for (int i =0; i < lista.size(); i++) {
             Evento evt = lista.get(i);
-            System.out.println(evt.getId()+" - "+ "Nome: " + evt.getNome() +" - " + "Endereço: " + evt.getEndereco() + " - " + " Horário: " + evt.getHorario() + " - " + " Participantes: " + evt.listarParticipantes());
+            System.out.println(evt.getId()+" - "+ "Nome: " + evt.getNome() +" - " + "Endereço: " + evt.getEndereco() + " - " + " Horário: " + evt.getHorario().get(0) + ":" + evt.getHorario().get(1) + ":" + evt.getHorario().get(2) + " - " + " Participantes:" + evt.listarParticipantes());
         }
     }
     public void displayEvento(Evento evt) {
@@ -31,10 +31,11 @@ public class EventoView {
     public Evento displayFormularioEvento(){
 		String nome, contato, endereco, newCategoria;
 		int categoria = -1;
-		ArrayList<Usuario> participantes = new ArrayList<Usuario>();
-		System.out.println("Digite o nome do seu evento: $");
-		nome = (sc.next());
-		System.out.println("Digite o seu endereço: $");
+		ArrayList<String> participantes = new ArrayList<String>();
+		ArrayList<Integer> horario = new ArrayList<Integer> ();
+		System.out.print("Digite o nome do seu evento: $");
+		nome = (sc.nextLine());
+		System.out.print("Digite o seu endereço: $");
 		endereco = (sc.next());
 		do {
 			System.out.println(
@@ -67,7 +68,14 @@ public class EventoView {
 				newCategoria = "LOQUEOU, TÁ MALUCO MEU?!?";
 				break;
 		}
-		Evento evt = new Evento(0,nome,endereco,newCategoria, participantes);
+		System.out.print("Digite a hora do evento (HH): ");
+		horario.add(sc.nextInt());
+		System.out.print("Digite o minuto do evento (MM): ");
+		horario.add(sc.nextInt());
+		System.out.print("Digite o segundo do evento (SS): ");
+		horario.add(sc.nextInt());
+		
+		Evento evt = new Evento(0,nome,endereco,newCategoria, horario, participantes);
 		return evt;
     }
     
@@ -88,7 +96,7 @@ public class EventoView {
 		System.out.print("Digite o id do evento escolhido: ");
 		int idEvt = sc.nextInt();
 		try {
-			evb.addParticipante(udb.getTodosUsuarios().get(id -1), evb.getTodosEventos().get(idEvt -1));
+			evb.addParticipante(udb.getTodosUsuarios().get(id -1).getNome(),evb.getTodosEventos().get(idEvt -1));
 			System.out.println("USUARIO ADICIONADO AEEE\n\n");
 		} catch (Error error) {
 			System.out.println(error);

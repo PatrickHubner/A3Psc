@@ -16,7 +16,7 @@ public class Usuario extends Elemento {
 	}
 	@Override
 	public String toString() {
-		return getId() + " - " + "Nome: " + getNome() + " - " + "Contato: " + getContato() + ";";
+		return "Id: " + getId() + " - " + "Nome: " + getNome() + " - " + "Contato: " + getContato() +  " - " + "Endereco: " + getEndereco();
 	}	
 	
 }
