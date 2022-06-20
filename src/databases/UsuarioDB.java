@@ -43,7 +43,6 @@ public class UsuarioDB {
         } else {
             /* ADICIONA USUARIO */
             this.usuarios.add( usuario);
-            System.out.println(this.usuarios);
             salvarUsuariosNoBD();
 
         }
