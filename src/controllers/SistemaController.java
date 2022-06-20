@@ -24,6 +24,10 @@ public class SistemaController {
 		evt.addParticipante();
 	}
 	
+	public void removeParticipante() {
+		evt.removeParticipante();
+	}
+	   
 	public void eventosComUser() {
 		evt.eventosComUser();
 	}
@@ -31,5 +35,9 @@ public class SistemaController {
 	public void eventosSemUser() {
 		evt.eventosSemUser();
 	}
+	
+	 public void eventosPertoDeAgora() {
+		   evt.eventosPertoDeAgora();
+	   }
 	
  }

@@ -27,7 +27,7 @@ public class MenuController {
 	    		sdb.addParticipante();
 	    		break;
 	    	case 6: 
-	    		System.out.println("FALTA FAZER\n");
+	    		sdb.removeParticipante();
 	    		break;
 	    	case 7: 
 	    		sdb.eventosComUser();
@@ -36,7 +36,7 @@ public class MenuController {
 	    		sdb.eventosSemUser();
 	    		break;
 	    	case 9: 
-	    		System.out.println("FALTA FAZER\n");
+	    		sdb.eventosPertoDeAgora();
 	    		break;
 	    	case 0: 
 	    		System.out.println("Fim do programa!\n");

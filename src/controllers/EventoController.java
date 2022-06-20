@@ -27,12 +27,20 @@ public class EventoController {
 		   view.addParticipante();
 	   }
 	   
+	   public void removeParticipante() {
+		   view.removeParticipante();
+	   }
+	   
 	   public void eventosComUser() {
 		   view.eventosComUser();
 	   }
 	   
 	   public void eventosSemUser() {
 		   view.eventosSemUser();
+	   }
+	   
+	   public void eventosPertoDeAgora() {
+		   view.eventosPertoDeAgora();
 	   }
 	}
 

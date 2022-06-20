@@ -62,12 +62,13 @@ public class EventoDB {
 	public void addParticipante(String participante,Evento evento) {
 		evento.addParticipante(participante);
 		this.participantes.add(participante);
-		System.out.println(this.participantes);
 		salvarEventosNoBD();
 	}
 	
 	public void removeParticipante(String participante, Evento evento) {
 		evento.removeParticipante(participante);
+		this.participantes.remove(participante);
+		salvarEventosNoBD();
 	}
 
 }
