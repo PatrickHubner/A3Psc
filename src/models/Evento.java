@@ -34,7 +34,7 @@ public class Evento extends Elemento {
 	}
 	@Override
 	public String toString() {
-		return getId() + " - Evento " + getNome() + " - Endereço: " + getEndereco() + " - Categoria: " + getCategoria() + " Horário: " + getHorario() + " - Participantes: " + listarParticipantes();
+		return getId() + " - Evento " + getNome() + " - Endereço: " + getEndereco() + " - Categoria: " + getCategoria() + " Horário: " + getHorario().get(0) +":"+getHorario().get(1)+":"+getHorario().get(2) + " - Participantes: " + listarParticipantes();
 	}
 	
 

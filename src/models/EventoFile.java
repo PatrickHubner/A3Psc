@@ -23,19 +23,17 @@ public class EventoFile extends DefaultFile {
 	}
 	
 	public void formatarDados(ArrayList<String> participantes, ArrayList<Integer> horario, String[] campos) {
-		//System.out.println(.split(",")[1]);
-		String temp = campos[5].replace("[", ",").replace("]", ",");
-		String[] lista = temp.split(",");
-		System.out.println(lista[0]);
-		System.out.println(lista[1]);
+		if (campos[5].length() > 0) {
+			String temp = campos[5].replace("[", ",").replace("]", ",");
+			String[] lista = temp.split(",");
+	    	for (int i = 1; i < lista.length; i ++) {
+	    		System.out.println(lista[i]);
+	    		participantes.add(lista[i]);
+	    	}
+		}
     	int hora = Integer.parseInt(campos[4].split("")[1] + campos[4].split("")[2]);
     	int minuto = Integer.parseInt(campos[4].split("")[5] + campos[4].split("")[6]);
     	int segundo = Integer.parseInt(campos[4].split("")[9] + campos[4].split("")[10]);
-    	for (int i = 1; i < lista.length; i ++) {
-    		System.out.println(lista[i]);
-    		participantes.add(lista[i]);
-    	}
-    	System.out.println(participantes);
     	horario.add(hora);
     	horario.add(minuto);
     	horario.add(segundo);

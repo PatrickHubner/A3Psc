@@ -26,5 +26,13 @@ public class EventoController {
 	   public void addParticipante() {
 		   view.addParticipante();
 	   }
+	   
+	   public void eventosComUser() {
+		   view.eventosComUser();
+	   }
+	   
+	   public void eventosSemUser() {
+		   view.eventosSemUser();
+	   }
 	}
 

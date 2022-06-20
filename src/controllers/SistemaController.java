@@ -24,4 +24,12 @@ public class SistemaController {
 		evt.addParticipante();
 	}
 	
+	public void eventosComUser() {
+		evt.eventosComUser();
+	}
+	
+	public void eventosSemUser() {
+		evt.eventosSemUser();
+	}
+	
  }
